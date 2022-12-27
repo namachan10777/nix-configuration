@@ -24,6 +24,13 @@
           [ ms-vscode-remote.remote-ssh vscodevim.vim ]
           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
+              name = "satysfi-workshop";
+              publisher = "pickoba";
+              version = "1.3.0";
+              sha256 =
+                "95b3bc2cff177a6f3d1e46b699c9e800899d0cb0c43410cf9920e8ac9fdc74b7";
+            }
+            {
               name = "Nix";
               publisher = "bbenoist";
               version = "1.0.1";
