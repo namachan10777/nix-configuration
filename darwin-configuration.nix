@@ -9,6 +9,17 @@
       home.packages =
         [ pkgs.lazygit pkgs.gh pkgs.earthly pkgs.satysfi pkgs.skim pkgs.ghq ];
       home.stateVersion = "23.05";
+      programs.neovim = {
+        enable = true;
+        plugins = [ pkgs.vimPlugins.nvim-treesitter.withAllGrammars ];
+        extraConfig = ''
+          :luafile ~/.config/nvim/init.lua
+        '';
+      };
+      xdg.configFile.nvim = {
+        source = ./neovim/config;
+        recursive = true;
+      };
       programs.fish = {
         enable = true;
         shellAbbrs = {
@@ -100,6 +111,6 @@
     ];
   };
   users.users.namachan.shell = pkgs.nix;
+  nixpkgs.config.allowUnfree = true;
   services.nix-daemon.enable = true;
-  nix.package = pkgs.nix;
 }
