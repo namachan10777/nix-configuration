@@ -46,6 +46,7 @@ vim.opt.listchars = "tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%"
 -- Coc推奨設定(わからん)
 vim.opt.hidden = true
 vim.opt.updatetime = 300
+vim.opt.inccommand = "nosplit"
 
 
 require("lazy").setup({
