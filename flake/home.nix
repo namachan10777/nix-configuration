@@ -1,4 +1,5 @@
-{ pkgs, stdenv, ... }: {
+{ config, pkgs, ... }:
+{
   nixpkgs.config.allowUnfree = true;
   home.username = "namachan";
   home.packages = [
