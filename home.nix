@@ -15,8 +15,12 @@
     (with pkgs;
       vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions;
-          [ ms-vscode-remote.remote-ssh vscodevim.vim tomoki1207.pdf matklad.rust-analyzer ]
-          ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          [
+            ms-vscode-remote.remote-ssh
+            vscodevim.vim
+            tomoki1207.pdf
+            rust-lang.rust-analyzer
+          ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
               name = "prettyxml";
               publisher = "PrateekMahendrakar";
