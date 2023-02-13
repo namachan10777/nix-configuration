@@ -17,6 +17,9 @@
       pkgs.ninja
       pkgs.nixfmt
       pkgs.cloudflared
+      pkgs.pkg-config
+      pkgs.nmap
+      pkgs.cmake
     ];
   };
   users.users.namachan.shell = pkgs.nix;

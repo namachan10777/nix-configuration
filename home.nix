@@ -22,6 +22,12 @@
             rust-lang.rust-analyzer
           ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
             {
+              name = "proto";
+              publisher = "peterj";
+              version = "0.0.2";
+              sha256 = "9c0e43c91ff1b67231743d12ea5809fa5b34cf544948a064158cfb7f6ae3df11";
+            }
+            {
               name = "prettyxml";
               publisher = "PrateekMahendrakar";
               version = "3.0.1";
