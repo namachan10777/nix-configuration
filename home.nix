@@ -17,6 +17,7 @@
     pkgs.protobufc
     pkgs.opam
     pkgs.nixpkgs-fmt
+    pkgs.gnupg
     (with pkgs;
     vscode-with-extensions.override {
       vscodeExtensions = with vscode-extensions;
