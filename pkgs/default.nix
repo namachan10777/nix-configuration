@@ -1,0 +1,3 @@
+{
+  lemurs = import ./lemurs.nix;
+}

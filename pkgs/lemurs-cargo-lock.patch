@@ -1,0 +1,477 @@
+diff - -git a/Cargo.lock b/Cargo.lock
+  index 5875
+  c57..a9768b3 100644
+  - -- a/Cargo.lock
+  ++ + b/Cargo.lock
+@@ -2,18 +2,56 @@
+# It is not intended for manual editing.
+version = 3
+
++[[package]]
++name = "aho-corasick"
++version = "1.0.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "43f6cb1bf222025340178f382c426f13757b2960e89779dfcb319c32542a5a41"
++dependencies = [
++ "memchr",
++]
++
+[[package]]
+name = "autocfg"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
+
++[[package]]
++name = "bindgen"
++version = "0.66.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f2b84e06fc203107bfbad243f4aba2af864eb7db3b1cf46ea0a023b0b433d2a7"
++dependencies = [
++ "bitflags 2.3.3",
++ "cexpr",
++ "clang-sys",
++ "lazy_static",
++ "lazycell",
++ "log",
++ "peeking_take_while",
++ "prettyplease",
++ "proc-macro2",
++ "quote",
++ "regex",
++ "rustc-hash",
++ "shlex",
++ "syn 2.0.26",
++ "which",
++]
++
+[[package]]
+name = "bitflags"
+version = "1.3.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a"
+
++[[package]]
++name = "bitflags"
++version = "2.3.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "630be753d4e58660abd17930c71b647fe46c27ea6b63cc59e1e3851406972e42"
++
+[[package]]
+name = "cassowary"
+version = "0.3.0"
+@@ -26,19 +64,39 @@ version = "1.0.79"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "50d30906286121d95be3d479533b458f87493b30a4b5f79a607db8f5d11aa91f"
+
++[[package]]
++name = "cexpr"
++version = "0.6.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "6fac387a98bb7c37292057cffc56d62ecb629900026402633ae9160df93a8766"
++dependencies = [
++ "nom",
++]
++
+[[package]]
+name = "cfg-if"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
++[[package]]
++name = "clang-sys"
++version = "1.6.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c688fc74432808e3eb684cae8830a86be1d66a2bd58e1f248ed0960a590baf6f"
++dependencies = [
++ "glob",
++ "libc 0.2.139",
++ "libloading",
++]
++
+[[package]]
+name = "crossterm"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c0ebde6a9dd5e331cd6c6f48253254d117642c31653baa475e394657c59c1f7d"
+dependencies = [
+- "bitflags",
++ "bitflags 1.3.2",
+"crossterm_winapi 0.8.0",
+"libc 0.2.139",
+"mio",
+@@ -54,7 +112,7 @@ version = "0.22.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c85525306c4291d1b73ce93c8acf9c339f9b213aef6c1d85c3830cbf1c16325c"
+dependencies = [
+- "bitflags",
++ "bitflags 1.3.2",
+"crossterm_winapi 0.9.0",
+"libc 0.2.139",
+"mio",
+@@ -82,6 +140,12 @@ dependencies = [
+"winapi",
+]
+
++[[package]]
++name = "either"
++version = "1.8.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7fcaabb2fef8c910e7f4c7ce9f67a1283a1715879a7c230ca9d6d1ae31f16d91"
++
+[[package]]
+name = "env_logger"
+version = "0.9.3"
+@@ -102,6 +166,12 @@ dependencies = [
+"wasi",
+]
+
++[[package]]
++name = "glob"
++version = "0.3.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d2fabcfbdc87f4758337ca535fb41a6d701b65693ce38287d856d1674551ec9b"
++
+[[package]]
+name = "instant"
+version = "0.1.12"
+@@ -111,10 +181,23 @@ dependencies = [
+"cfg-if",
+]
+
++[[package]]
++name = "lazy_static"
++version = "1.4.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
++
++[[package]]
++name = "lazycell"
++version = "1.3.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
++
+[[package]]
+name = "lemurs"
+-version = "0.4.0"
++version = "0.3.1"
+dependencies = [
++ "bindgen",
+"crossterm 0.22.1",
+"env_logger",
+"libc 0.2.139",
+@@ -142,6 +225,16 @@ version = "0.2.139"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "201de327520df007757c1f0adce6e827fe8562fbc28bfd9c15571c66ca1f5f79"
+
++[[package]]
++name = "libloading"
++version = "0.7.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b67380fd3b2fbe7527a606e18729d21c6f3951633d0500574c4dc22d2d638b9f"
++dependencies = [
++ "cfg-if",
++ "winapi",
++]
++
+[[package]]
+name = "lock_api"
+version = "0.4.9"
+@@ -161,6 +254,12 @@ dependencies = [
+"cfg-if",
+]
+
++[[package]]
++name = "memchr"
++version = "2.5.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
++
+[[package]]
+name = "memoffset"
+version = "0.6.5"
+@@ -170,6 +269,12 @@ dependencies = [
+"autocfg",
+]
+
++[[package]]
++name = "minimal-lexical"
++version = "0.2.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "68354c5c6bd36d73ff3feceb05efa59b6acb7626617f4962be322a825e61f79a"
++
+[[package]]
+name = "mio"
+version = "0.7.14"
+@@ -198,13 +303,23 @@ version = "0.23.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8f3790c00a0150112de0f4cd161e3d7fc4b2d8a5542ffc35f099a2562aecb35c"
+dependencies = [
+- "bitflags",
++ "bitflags 1.3.2",
+"cc",
+"cfg-if",
+"libc 0.2.139",
+"memoffset",
+]
+
++[[package]]
++name = "nom"
++version = "7.1.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d273983c5a657a70a3e8f2a01329822f3b8c8172b73826411a55751e404a0a4a"
++dependencies = [
++ "memchr",
++ "minimal-lexical",
++]
++
+[[package]]
+name = "ntapi"
+version = "0.3.7"
+@@ -220,6 +335,12 @@ version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b8f8bdf33df195859076e54ab11ee78a1b208382d3a26ec40d142ffc1ecc49ef"
+
++[[package]]
++name = "once_cell"
++version = "1.18.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
++
+[[package]]
+name = "pam"
+version = "0.7.0"
+@@ -265,6 +386,12 @@ dependencies = [
+"winapi",
+]
+
++[[package]]
++name = "peeking_take_while"
++version = "0.1.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099"
++
+[[package]]
+name = "pgs-files"
+version = "0.0.7"
+@@ -280,20 +407,30 @@ version = "0.2.17"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5b40af805b3121feab8a3c29f04d8ad262fa8e0561883e7653e024ae4479e6de"
+
++[[package]]
++name = "prettyplease"
++version = "0.2.10"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "92139198957b410250d43fad93e630d956499a625c527eda65175c8680f83387"
++dependencies = [
++ "proc-macro2",
++ "syn 2.0.26",
++]
++
+[[package]]
+name = "proc-macro2"
+-version = "1.0.51"
++version = "1.0.66"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5d727cae5b39d21da60fa540906919ad737832fe0b1c165da3a34d6548c849d6"
++checksum = "18fb31db3f9bddb2ea821cde30a9f70117e3f119938b5ee630b7403aa6e2ead9"
+dependencies = [
+"unicode-ident",
+]
+
+[[package]]
+name = "quote"
+-version = "1.0.23"
++version = "1.0.31"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8856d8364d252a14d474036ea1358d63c9e6965c8e5c1885c18f73d70bff9c7b"
++checksum = "5fe8a65d69dd0808184ebb5f836ab526bb259db23c657efa38711b1072ee47f0"
+dependencies = [
+"proc-macro2",
+]
+@@ -334,7 +471,7 @@ version = "0.2.16"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fb5a58c1855b4b6819d59012155603f0b22ad30cad752600aadfcb695265519a"
+dependencies = [
+- "bitflags",
++ "bitflags 1.3.2",
+]
+
+[[package]]
+@@ -346,6 +483,41 @@ dependencies = [
+"redox_syscall",
+]
+
++[[package]]
++name = "regex"
++version = "1.9.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b2eae68fc220f7cf2532e4494aded17545fce192d59cd996e0fe7887f4ceb575"
++dependencies = [
++ "aho-corasick",
++ "memchr",
++ "regex-automata",
++ "regex-syntax",
++]
++
++[[package]]
++name = "regex-automata"
++version = "0.3.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "39354c10dd07468c2e73926b23bb9c2caca74c5501e38a35da70406f1d923310"
++dependencies = [
++ "aho-corasick",
++ "memchr",
++ "regex-syntax",
++]
++
++[[package]]
++name = "regex-syntax"
++version = "0.7.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e5ea92a5b6195c6ef2a0295ea818b312502c6fc94dde986c5553242e18fd4ce2"
++
++[[package]]
++name = "rustc-hash"
++version = "1.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2"
++
+[[package]]
+name = "scopeguard"
+version = "1.1.0"
+@@ -369,9 +541,15 @@ checksum = "af487d118eecd09402d70a5d72551860e788df87b464af30e5ea6a38c75c541e"
+dependencies = [
+"proc-macro2",
+"quote",
+- "syn",
++ "syn 1.0.109",
+]
+
++[[package]]
++name = "shlex"
++version = "1.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "43b2853a4d09f215c24cc5489c992ce46052d359b5109343cbafbf26bc62f8a3"
++
+[[package]]
+name = "signal-hook"
+version = "0.3.15"
+@@ -419,6 +597,17 @@ dependencies = [
+"unicode-ident",
+]
+
++[[package]]
++name = "syn"
++version = "2.0.26"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "45c3457aacde3c65315de5031ec191ce46604304d2446e803d71ade03308d970"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "unicode-ident",
++]
++
+[[package]]
+name = "termion"
+version = "1.5.6"
+@@ -446,7 +635,7 @@ version = "0.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "39c8ce4e27049eed97cfa363a5048b09d995e209994634a0efc26a14ab6c0c23"
+dependencies = [
+- "bitflags",
++ "bitflags 1.3.2",
+"cassowary",
+"crossterm 0.20.0",
+"termion",
+@@ -497,6 +686,17 @@ version = "0.11.0+wasi-snapshot-preview1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423"
+
++[[package]]
++name = "which"
++version = "4.4.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "2441c784c52b289a054b7201fc93253e288f094e2f4be9058343127c4226a269"
++dependencies = [
++ "either",
++ "libc 0.2.139",
++ "once_cell",
++]
++
+[[package]]
+name = "winapi"
+version = "0.3.9"
+diff --git a/Cargo.toml b/Cargo.toml
+index a6cfed5..20dd00d 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -40,3 +40,6 @@ log = "0.4.0"
+# Configuration File Parsing
+toml = "0.5"
+serde = { version = "1.0", features = ["derive"] }
++
++[build-dependencies]
++bindgen = "0.66.1"
+diff --git a/build.rs b/build.rs
+new file mode 100644
+index 0000000..3daf4a1
+--- /dev/null
++++ b/build.rs
+@@ -0,0 +1,18 @@
++use std::env;
++use std::path::PathBuf;
++
++fn main() {
++    println!("cargo:rerun-if-changed=wrapper.h");
++    println!("cargo:rustc-link-lib=pam");
++    println!("cargo:rustc-link-lib=audit");
++    let bindings = bindgen::Builder::default()
++        .header("wrapper.h")
++        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
++        .generate()
++        .expect("Unable to generate bindings");
++
++    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
++    bindings
++        .write_to_file(out_path.join("bindings.rs"))
++        .expect("Couldn't write bindings!");
++}
+diff --git a/src/auth/pam.rs b/src/auth/pam.rs
+index 69f6221..9ca6cb9 100644
+--- a/src/auth/pam.rs
++++ b/src/auth/pam.rs
+@@ -3,6 +3,14 @@ use log::info;
+use pam::{Authenticator, PasswordConv};
+use pgs_files::passwd::{get_entry_by_name, PasswdEntry};
+
++pub mod audit {
++    #![allow(dead_code)]
++    #![allow(non_camel_case_types)]
++    #![allow(non_upper_case_globals)]
++    #![allow(non_snake_case)]
++    include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
++}
++
+/// All the different errors that can occur during PAM opening an authenticated session
+#[derive(Clone)]
+pub enum AuthenticationError {
+@@ -29,6 +37,9 @@ pub fn open_session<'a>(
+password: &str,
+pam_service: &str,
+) -> Result<(Authenticator<'a, PasswordConv>, PasswdEntry), AuthenticationError> {
++
++    unsafe { audit::audit_open(); }
++
+let username = username.to_string();
+let password = password.to_string();
+
+diff --git a/wrapper.h b/wrapper.h
+new file mode 100644
+index 0000000..380c912
+--- /dev/null
++++ b/wrapper.h
+@@ -0,0 +1 @@
++#include <libaudit.h>
+\ No newline at end of file
