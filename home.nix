@@ -88,6 +88,7 @@
     shellAbbrs = {
       lg = "lazygit";
       v = "nvim";
+      ev = "envchain";
     };
     functions = {
       __ghq_repository_search = {
