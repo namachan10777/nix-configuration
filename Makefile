@@ -15,7 +15,7 @@ home: home.nix darwin-configuration.nix $(FISH) $(NEOVIM) $(PKGS)
 	./install.sh pkgs                     $(HOME_MANAGER_HOME)
 	./install.sh home.nix                 $(HOME_MANAGER_HOME)
 	./install.sh darwin-configuration.nix $(HOME_MANAGER_HOME)
-	home-manager switch
+	which home-manager && home-manager switch || echo "Please update by nixos-rebuild switch"
 
 system: configuration.nix $(PKGS) # $(MODULES)
 	./install.sh pkgs              /etc/nixos
