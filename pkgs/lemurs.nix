@@ -1,4 +1,11 @@
 with import <nixpkgs> { };
+let
+  config = import ./lemurs-config.nix {
+    xsessionOption = "";
+    xsessionDir = "/var/run/xorg/xsession";
+    pkgs = pkgs;
+  };
+in
 rustPlatform.buildRustPackage rec {
   pname = "lemurs";
   version = "v0.3.1";
@@ -9,6 +16,8 @@ rustPlatform.buildRustPackage rec {
     rev = version;
     hash = "sha256-6mNSLEWafw8yDGnemOhEiK8FTrBC+6+PuhlbOXTGmN0=";
   };
+
+  LEMURS_SYSTEM_SHELL = "${pkgs.bash}/bin/bash";
 
   cargoHash = "sha256-9yZoU0+Z0C2d23yuuwqBqwv4G04QJZe5Gb1TuV3UpME=";
   cargoPatches = [
@@ -24,8 +33,8 @@ rustPlatform.buildRustPackage rec {
 
   postInstall = ''
     mkdir -p $out/etc/lemurs/{wms,wayland}
-    cp extra/config.toml $out/etc/lemurs/config.toml
-    cp extra/xsetup.sh $out/etc/lemurs/xsetup.sh
+    cp ${pkgs.writeText "lemurs-config" config.config } $out/etc/lemurs/config.toml
+    cp ${pkgs.writeText "lemurs-xsetup" config.xsetup } $out/etc/lemurs/xsetup.sh
   '';
 
   meta = with lib; {
