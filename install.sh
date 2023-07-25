@@ -9,15 +9,8 @@ fi
 platform="$(uname)"
 
 if [ "$platform" = "Linux" ]; then
-    for f in $(find $1 -type f); do
-        install -m 644 -D "$f" "$2/$f"
-    done
+	find "$1" -type f -exec install -m 644 -D "$1" "$2/{}" \;
 elif [ "$platform" = "Darwin" ]; then
-    for f in $(find $1); do
-        if [ -d "$f" ]; then
-            install -d -m 755 "$f" "$2/$f"
-        else
-            install -m 644 "$f" "$2/$f"
-        fi
-    done
+	find "$1" -type d -exec install -d -m 755 "{}" "$2/{}" \;
+	find "$1" -type f -exec install -m 644 "{}" "$2/{}" \;
 fi
