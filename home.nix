@@ -73,7 +73,7 @@
     '';
   };
   xdg.configFile.nvim = {
-    source = ./neovim/config;
+    source = ./dotfiles/neovim/config;
     recursive = true;
   };
   programs.git = {
@@ -93,9 +93,13 @@
     };
     functions = {
       __ghq_repository_search = {
-        body = builtins.readFile ./fish/__ghq_repository_search.fish;
+        body = builtins.readFile ./dotfiles/fish/__ghq_repository_search.fish;
       };
     };
-    shellInit = builtins.readFile ./fish/init.fish;
+    shellInit = builtins.readFile ./dotfiles/fish/init.fish;
+  };
+  xdg.configFile.sway = {
+    source = ./dotfiles/sway;
+    recursive = true;
   };
 }

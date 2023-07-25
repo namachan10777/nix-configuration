@@ -1,7 +1,6 @@
 NIX_SOURCES=$(shell find . -type f -name "*.nix")
-FISH=$(shell find fish -type f -name "*")
-NEOVIM=$(shell find neovim -type f -name "*")
 PKGS=$(shell find pkgs -type f -name "*")
+DOTFILES=$(shell find dotfiles -type f -name "*")
 # MODULES=$(shell find modules -type f -name "*")
 ifeq ($(shell uname), Darwin)
 	HOME_MANAGER_HOME=$(HOME)/.nixpkgs
@@ -13,9 +12,8 @@ endif
 fmt: $(NIX_SOURCES)
 	nixpkgs-fmt $(NIX_SOURCES)
 
-home: home.nix darwin-configuration.nix $(FISH) $(NEOVIM) $(PKGS)
-	./install.sh fish                     $(HOME_MANAGER_HOME)
-	./install.sh neovim/config            $(HOME_MANAGER_HOME)
+home: home.nix darwin-configuration.nix $(DOTFILES) $(PKGS)
+	./install.sh dotfiles                 $(HOME_MANAGER_HOME)
 	./install.sh pkgs                     $(HOME_MANAGER_HOME)
 	./install.sh home.nix                 $(HOME_MANAGER_HOME)
 	./install.sh darwin-configuration.nix $(HOME_MANAGER_HOME)
