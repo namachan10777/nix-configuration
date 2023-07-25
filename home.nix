@@ -30,22 +30,22 @@
           {
             name = "proto";
             publisher = "peterj";
-            version = "0.0.2";
-            sha256 = "9c0e43c91ff1b67231743d12ea5809fa5b34cf544948a064158cfb7f6ae3df11";
+            version = "0.0.4";
+            sha256 = "3bccfd54fad1fe2f3749e4f5705ea916215034bbb6e4d9904aef4d0328e82f0c";
           }
           {
             name = "prettyxml";
             publisher = "PrateekMahendrakar";
-            version = "3.0.1";
+            version = "3.4.0";
             sha256 =
-              "76f4bd4cf35f7e0d088e795b923e8cf8fdb57c7f274f69b36e16ceb95f9c92f6";
+              "24e3521956a5b4ebb87b78e075f5e5cdf28b4329868f69e04586897814f45230";
           }
           {
             name = "satysfi-workshop";
             publisher = "pickoba";
-            version = "1.3.0";
+            version = "1.4.0";
             sha256 =
-              "95b3bc2cff177a6f3d1e46b699c9e800899d0cb0c43410cf9920e8ac9fdc74b7";
+              "0e0cc473138210828ca5b70fee52f93d3839432081ad6e9d4358b2a439af3727";
           }
           {
             name = "Nix";
@@ -57,8 +57,8 @@
           {
             name = "remote-ssh-edit";
             publisher = "ms-vscode-remote";
-            version = "0.47.2";
-            sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+            version = "0.86.0";
+            sha256 = "26c6daa087a4528da7282bbe7cd6c6961e5dd53b7f409194b975063f4e13b032";
           }
         ];
     })
