@@ -3,7 +3,11 @@ FISH=$(shell find fish -type f -name "*")
 NEOVIM=$(shell find neovim -type f -name "*")
 PKGS=$(shell find pkgs -type f -name "*")
 # MODULES=$(shell find modules -type f -name "*")
-HOME_MANAGER_HOME=$(HOME)/.config/home-manager
+ifeq ($(shell uname), Darwin)
+	HOME_MANAGER_HOME=$(HOME)/.nixpkgs
+else
+	HOME_MANAGER_HOME=$(HOME)/.config/home-manager
+endif
 
 .PHONY: home system fmt
 fmt: $(NIX_SOURCES)
